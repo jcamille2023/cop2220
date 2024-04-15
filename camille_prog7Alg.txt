@@ -1,0 +1,10 @@
+Jossaya Camille
+Natalia Builes
+April 01, 2024
+A program to convert create compound words stored in arrays by converting words to characters,
+
+
+1. Declare 3 arrays of size 100
+2. Ask, get, and store a word from the user in the first array
+3. Store a new version of the word which contains all uppercase letters in a second array
+4. iterate through the first array, convert every character that is a vowel to # (hashtags) and every other character to ~ (tildes), then store the converted character in the third array
