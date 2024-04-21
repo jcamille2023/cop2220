@@ -224,7 +224,7 @@ void AddCustomerToList(customer inventory[], int count)
     scanf(" %s", inventory[count].OrderName);
 
     printf("Please enter the amount of the order: ");
-    scanf(" %lf", inventory[count].OrderAmount);
+    scanf(" %lf", &inventory[count].OrderAmount);
 
     printf("Please enter the location of the order: ");
     scanf(" %s", inventory[count].location);
