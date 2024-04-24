@@ -45,15 +45,15 @@ int main()
 	myReptile = FillReptile();
 
 	//print using display function
-	printf("\n---------Display myCard\n");
-	DisplayCard(myReptile);
-	printf("\n---------Display myCard1\n");
-	DisplayCard(myReptile1);
+	printf("\n---------Display myReptile\n");
+	DisplayReptile(myReptile);
+	printf("\n---------Display myReptile1\n");
+	DisplayReptile(myReptile1);
 
 	//Fill structure using pointers and dispay it
-	FillCardPtr(&myReptile2);
+	FillReptilePtr(&myReptile2);
 	printf("\n---------Display myCard2\n");
-	DisplayCard(myReptile2);
+	DisplayReptile(myReptile2);
 
 	//Fill the array with the function
 	printf("\n---------Fill array manyCards\n");
@@ -65,11 +65,6 @@ int main()
 	{
 		DisplayCard(manyReptiles[i]);
 	}
-
-	return 0;
-
-
-
 	return 0;
 }
 
@@ -82,7 +77,26 @@ reptile FillReptile() {
     printf("Enter the color of your reptile: \n");
     scanf(" %s", &new_rept.color);
     printf("Enter the weight of your reptile: \n");
-    scanf(" %s", &new_rept.color);
+    scanf("%lf", &new_rept.weight);
     return new_rept;
+}
+
+void displayReptile(reptile rept1) {
+    int len1, len2, n;
+    len1 = strlen(rept1.name);
+    len2 = strlen(rept1.color);
+    printf("Name: ");
+    for(n = 0; n < len1; n++) {
+        printf("%c", rept1.name[n]);
+    }
+    printf("\n");
+    printf("Color: ");
+    for(n = 0; n < len1; n++) {
+        printf("%c", rept1.color[n]);
+    }
+    printf("\n");
+    printf("Weight: %.2f\n", rept1.weight);
+
+    return; 
 }
 
