@@ -1,6 +1,9 @@
 
-//COP 2220 spring 2024 Program 9
-//add name, date and a brief description here
+/* 
+    Jossaya Camille
+    Apr 23, 2024
+    A program to allow managers to manage customer orders, add new customers and generate customer reports.
+*/
 
 #define _CRT_SECURE_NO_WARNINGS //for Visual Studio compiler
 #pragma warning(disable:6031) //ignore scanf warnings
@@ -68,7 +71,7 @@ int main()
     //fill five customers into the array
     FillFive(inventory);
     //set count to 5
-     count = 5;
+    count = 5;
    
     printf("\nFIVE Valid customers have been added to the inventory.\n\n");
 
@@ -85,6 +88,14 @@ int main()
 }
 
 //(1)greet the user
+void Greeting()
+{
+    printf("Welcome to the Customer Order Program\n");
+    printf("This program will allow you to add, print, and manipulate customer orders.\n");
+    printf("You can also create a report of all the orders.\n");
+    printf("Let's get started!\n");
+}
+
 
 //(2)fill the inventory with five customers
 void FillFive(customer inventory[])
@@ -104,15 +115,30 @@ void FillFive(customer inventory[])
 }
 
 //(3)Display the menu, ask, get, and return the user choice
-
+char GetChoice()
+{
+    char choice;
+    printf("\n\nPlease choose from the following options:\n");
+    printf("A - Add a new customer\n");
+    printf("P - Print one customer\n");
+    printf("V - Print all valid customers\n");
+    printf("C - Create a report\n");
+    printf("I - Make a customer invalid\n");
+    printf("E - Print all customers with an amount greater than a certain amount\n");
+    printf("T - Calculate the total and the average of all the valid orders\n");
+    printf("Q - Quit\n");
+    printf("Enter your choice: ");
+    scanf(" %c", &choice);
+    return toupper(choice);
+}
 //(4)run the program menu (process the choice)
 //use if else conditions (or switch)
 void ProcessMenu(char choice, customer inventory[], int* countPtr)
 {
     if (choice == 'A')
     {
-        *countPtr = *countPtr + 1;
         AddCustomerToList(inventory, *countPtr);
+        *countPtr = *countPtr + 1;
         
     }
     else if (choice == 'P')
@@ -174,10 +200,10 @@ void PrintOneCustomer(customer info)
 {
     printf("\n---------------------------------------\n");
     printf("\nOrder number:\t\t%d", info.OrderNumber);
-    printf("\nOrder name: %s", info.OrderName);
-    printf("\nOrder amount: $%.2f", info.OrderAmount);
-    printf("\nLocation: %s", info.location);
-    printf("Valid order: %c", info.validOrder);
+    printf("\nOrder name: \t\t%s", info.OrderName);
+    printf("\nOrder amount: \t\t$%.2f", info.OrderAmount);
+    printf("\nLocation: \t\t%s", info.location);
+    printf("\nValid order: \t\t%c", info.validOrder);
 }
 
 //(6)print entire VALID customer inventory onto the screen
@@ -207,7 +233,7 @@ void PrintListToFile(customer inventory[], int count)
         fprintf(outPtr,"\nOrder name:\t\t %s", inventory[i].OrderName);
         fprintf(outPtr, "\nOrder amount: \t\t$%.2f", inventory[i].OrderAmount);
         fprintf(outPtr,"\nLocation: \t\t%s", inventory[i].location);
-        fprintf(outPtr,"Valid order: \t\t%c", inventory[i].validOrder);
+        fprintf(outPtr,"\nValid order: \t\t%c", inventory[i].validOrder);
         //add the rest
     }
     fclose(outPtr);
@@ -224,7 +250,7 @@ void AddCustomerToList(customer inventory[], int count)
     scanf(" %s", inventory[count].OrderName);
 
     printf("Please enter the amount of the order: ");
-    scanf(" %lf", &inventory[count].OrderAmount);
+    scanf("%lf", &inventory[count].OrderAmount);
 
     printf("Please enter the location of the order: ");
     scanf(" %s", inventory[count].location);
@@ -233,23 +259,25 @@ void AddCustomerToList(customer inventory[], int count)
 
     //set the order as valid
     inventory[count].validOrder = 'V';
+    printf("\nOrder has been added to the inventory. The order number is: %d\n",count+1);
+    return;
 
 }
 
 //(9)make a customer invalid
 void MakeInvalid(customer inventory[], int count)
 {
+    int number;
     printf("\nThere are %d orders\n", count);
-    //declare ask and get the order number
-    int number = 0;
-
+    
     do{
-        inventory[number].validOrder = 'I';
-        number++; 
-    }while(number < count);
-    //order number is one greater than the index, examples:
-    //index is 0 - order number is 1
-    //inedx is 1 - order number is 2
+        printf("Which order number would you like to make invalid?\n");
+        scanf("%d", &number);
+        if(number > count || number < 1) {
+            printf("Invalid order number. Please try again.\n");
+        }
+    }while(number > count || number < 1);
+    inventory[number-1].validOrder = 'I';
 }
 
 
@@ -273,27 +301,3 @@ void CalculateTotalAverage(customer inventory[], int count)
 }
 
 
-void Greeting()
-{
-    printf("Welcome to the Customer Order Program\n");
-    printf("This program will allow you to add, print, and manipulate customer orders.\n");
-    printf("You can also create a report of all the orders.\n");
-    printf("Let's get started!\n");
-}
-
-char GetChoice()
-{
-    char choice;
-    printf("\n\nPlease choose from the following options:\n");
-    printf("A - Add a new customer\n");
-    printf("P - Print one customer\n");
-    printf("V - Print all valid customers\n");
-    printf("C - Create a report\n");
-    printf("I - Make a customer invalid\n");
-    printf("E - Print all customers with an amount greater than a certain amount\n");
-    printf("T - Calculate the total and the average of all the valid orders\n");
-    printf("Q - Quit\n");
-    printf("Enter your choice: ");
-    scanf(" %c", &choice);
-    return toupper(choice);
-}

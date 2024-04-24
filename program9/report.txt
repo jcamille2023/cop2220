@@ -1,0 +1,37 @@
+
+---------------------------------------
+
+Order number:		1
+Order name:		 Iron.Man
+Order amount: 		$23567843567.99
+Location: 		MalibuValid order: 		V
+---------------------------------------
+
+Order number:		2
+Order name:		 Jossaya
+Order amount: 		$4.19
+Location: 		Boynton BeachValid order: 		V
+---------------------------------------
+
+Order number:		3
+Order name:		 Amarnath
+Order amount: 		$5.00
+Location: 		Boynton BeachValid order: 		I
+---------------------------------------
+
+Order number:		4
+Order name:		 Thandi
+Order amount: 		$15.00
+Location: 		Boynton BeachValid order: 		I
+---------------------------------------
+
+Order number:		5
+Order name:		 Zach
+Order amount: 		$1000000.69
+Location: 		WellingtonValid order: 		I
+---------------------------------------
+
+Order number:		6
+Order name:		 Natalia
+Order amount: 		$1500.00
+Location: 		BocaRatonValid order: 		V
